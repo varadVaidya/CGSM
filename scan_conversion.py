@@ -42,14 +42,33 @@ class DDA_ScanConversion():
             roundedInterPoint = np.rint(interPoint)
             linePoints.append(roundedInterPoint)
             interPoint = interPoint + [Xinc,Yinc]
+        
+        return linePoints 
+        #print(linePoints)
+        
+        
+    @staticmethod
+    def DDA_Polygon(pointList):
+        
+        polygonPointList = []
+        numPoints = len(pointList)
+        
+        print("Your polygon is a triange") if len(pointList) == 3 else print("its not a triangle")
+        
+        for i in range(numPoints):
             
-        print(linePoints)
+            linePoints = DDA_ScanConversion.DDA_Line(pointList[i-1],pointList[i])
+            
+            polygonPointList.append(linePoints)
+            
+        return polygonPointList           
         
-        pass
-        
-        
+
 if __name__ == "__main__":
     
-    point0,point1 = np.array([-3,2]),np.array([6,4])
-    DDA_ScanConversion.DDA_Line(point0,point1)
+    pointList = [ np.array([0,0]),np.array([4,6]),np.array([-3,2])]     
+    polyList = DDA_ScanConversion.DDA_Polygon(pointList)
+    print(polyList)
+    
+
     
