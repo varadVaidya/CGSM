@@ -24,7 +24,7 @@ print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3))
 print('step = ', step)
 print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-while int(x) != x2:
+while (int(x) != x2) or (int(y) != y2):
     x += xpp
     y += ypp
 
