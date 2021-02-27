@@ -4,8 +4,8 @@
 # @copyright = None 
 #############################################
 
-x1 = -1; x2 = 10
-y1 = -3; y2 = 3
+x1 = 4; x2 = -10
+y1 = 8; y2 = -8
 
 dx = (x2-x1)
 dy = (y2-y1)
@@ -20,17 +20,18 @@ points = [[x,y]]
 
 print('######### INFO #########')
 print('x1 = ', x1, ' ', 'y1 = ', y1)
+print('x2 = ', x2, ' ', 'y2 = ', y2)
 print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3))
 print('step = ', step)
 print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-while (int(x) != x2) or (int(y) != y2):
+while (int(x) != x2) and (int(y) != y2):
     x += xpp
     y += ypp
 
     points.append([int(x),int(y)])
 
-print(points)
+print('Line', points)
 
 import matplotlib.pyplot as plt
 from matplotlib import colors

@@ -27,6 +27,7 @@ for i in range(N0):
 
     print('######### INFO #########')
     print('x1 = ', x1, ' ', 'y1 = ', y1)
+    print('x2 = ', x2, ' ', 'y2 = ', y2)
     print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3) if dx != 0 else 0)
     print('step = ', step)
     print('xpp = ', xpp, ' ', 'ypp = ', ypp)
@@ -37,7 +38,7 @@ for i in range(N0):
 
         points.append([int(x),int(y)])
 
-    print(points)
+    print('Line', points)
 
     poly_points += points
     points = []
