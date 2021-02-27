@@ -133,6 +133,17 @@ class Bresenham_ScanConversion():
                 i+=1
         return linePoints,p 
         #print(linePoints)
+    
+    @staticmethod
+    def Bresenham_Circle(Origin,r):
+        interPoints = [Origin(0),Origin(1)+r]
+        linePoints = []
+        p = []
+        p.append(1-r)
+        linePoints.append(interPoints)
+        
+
+
 if __name__ == "__main__":
     
     pointList = [ np.array([0,0]),np.array([4,6]),np.array([-3,2])]     
