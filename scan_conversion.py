@@ -63,7 +63,65 @@ class DDA_ScanConversion():
             
         return polygonPointList           
         
-
+class Bresenham_ScanConversion():
+    ## implementation of the Bresenham algorithm for making a line in betweeen a set of two points.
+    '''
+    all the points should be an numpy array..
+    
+    '''
+    
+    def __init__(self):
+        pass
+    
+    @staticmethod
+    def Bresenham_Line(point0,point1):
+        """
+        returns a list of points that will make a line between point 1 and point 2.
+        args: point1 and point2 should be a numpy array..
+        returns: list with all the points to be plotted..
+        """
+        
+        dx,dy = abs(point1 - point0)
+        linePoints = []
+        p = []
+        p.append(2*dy-dx)
+        twody=2*dy 
+        twodx=2*dx
+        i=0
+        ## For m<1
+        if abs(dx) > abs(dy):
+            if point0[0]>point1[0]:
+                interPoint = point1
+            else:
+                interPoint = point0
+            linePoints.append(interPoint)
+            while dx>0 :
+                if p[i]>0:
+                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
+                    p.append(p+(twody-twodx))
+                else:
+                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
+                    p.append(p+twody)
+                dx-=1
+                i+=1 
+        ## for m >1
+        if abs(dy) > abs(dx):
+            if point0[1]>point1[1]:
+                interPoint = point1
+            else:
+                interPoint = point0
+            linePoints.append(interPoint)
+            while dy>0 :
+                if p[i]>0:
+                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
+                    p.append(p+(twodx-twody))
+                else:
+                    linePoints.append(interPoint[0],interPoint[1]+1)
+                    p.append(p+twodx)
+                dy-=1
+                i+=1
+        return linePoints,p 
+        #print(linePoints)
 if __name__ == "__main__":
     
     pointList = [ np.array([0,0]),np.array([4,6]),np.array([-3,2])]     
