@@ -78,13 +78,16 @@ class Bresenham_ScanConversion():
         """
         returns a list of points that will make a line between point 1 and point 2.
         args: point1 and point2 should be a numpy array..
-        returns: list with all the points to be plotted..
+        returns: list with all the points and p values to be plotted..
         """
         
-        dx,dy = abs(point1 - point0)
+        dx,dy = point1 - point0
+        dx=abs(dx)
+        dy=abs(dy)
         linePoints = []
         p = []
-        p.append(2*dy-dx)
+        p.append(2*dy - dx)
+        p_current=2*dy-dx
         twody=2*dy 
         twodx=2*dx
         i=0
@@ -96,28 +99,36 @@ class Bresenham_ScanConversion():
                 interPoint = point0
             linePoints.append(interPoint)
             while dx>0 :
-                if p[i]>0:
-                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
-                    p.append(p+(twody-twodx))
+                if p_current > 0 :
+                    interPoint = interPoint+[1,1]
+                    linePoints.append(interPoint)
+                    p.append(p_current+(twody-twodx))
+                    p_current = p_current+(twody-twodx)
                 else:
-                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
-                    p.append(p+twody)
+                    interPoint = interPoint+[1,0]
+                    linePoints.append(interPoint)
+                    p.append(p_current+twody)
+                    p_current = p_current+twody
                 dx-=1
                 i+=1 
         ## for m >1
-        if abs(dy) > abs(dx):
+        else:
             if point0[1]>point1[1]:
                 interPoint = point1
             else:
                 interPoint = point0
             linePoints.append(interPoint)
             while dy>0 :
-                if p[i]>0:
-                    linePoints.append(interPoint[0]+1,interPoint[1]+1)
-                    p.append(p+(twodx-twody))
+                if p_current > 0:
+                    interPoint = interPoint+[1,1]
+                    linePoints.append(interPoint)
+                    p.append(p_current+(twodx-twody))
+                    p_current = p_current+(twodx-twody)
                 else:
-                    linePoints.append(interPoint[0],interPoint[1]+1)
-                    p.append(p+twodx)
+                    interPoint = interPoint+[0,1]
+                    linePoints.append(interPoint)
+                    p.append(p_current+twodx)
+                    p_current = p_current+twodx
                 dy-=1
                 i+=1
         return linePoints,p 
