@@ -6,7 +6,7 @@
 
 # x1, y1 should be lower
 
-x1 = 1; x2 = -1
+x1 = -1; x2 = 1
 y1 = -2; y2 = 4
 
 m = round((y2-y1)/(x2-x1), 3) if (x2-x1) != 0 else 100000000 # used just to represnt inf
@@ -62,16 +62,16 @@ else:
     linePoints.append([x, y])
     
     while dy>0 :
-        if p_current > 0 and dx != 0:
+        if p_current > 0:
             x, y = x+1, y+1
             linePoints.append([x, y])
             p_current += two_dx - two_dy
             p.append(p_current)            
-        elif p_current > 0 and dx == 0:
-            y += 1
-            linePoints.append([x, y])
-            p_current += two_dx - two_dy
-            p.append(p_current)
+        # elif p_current > 0 and dx == 0:
+        #     y += 1
+        #     linePoints.append([x, y])
+        #     p_current += two_dx - two_dy
+        #     p.append(p_current)
         else:
             y += 1
             linePoints.append([x, y])

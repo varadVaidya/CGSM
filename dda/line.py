@@ -5,7 +5,7 @@
 #############################################
 
 x1 = 4; x2 = -10
-y1 = 8; y2 = -8
+y1 = 2; y2 = -3
 
 dx = (x2-x1)
 dy = (y2-y1)
@@ -25,7 +25,7 @@ print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3))
 print('step = ', step)
 print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-while (int(x) != x2) and (int(y) != y2):
+for i in range(step):
     x += xpp
     y += ypp
 
@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import numpy as np
 
-N = 4*step
+N = 2*step
 # make an empty data set
 data = np.ones((N, N)) * np.nan
 # fill in some fake data
