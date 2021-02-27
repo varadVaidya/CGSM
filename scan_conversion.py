@@ -86,8 +86,8 @@ class Bresenham_ScanConversion():
         dy=abs(dy)
         linePoints = []
         p = []
-        p.append(2*dy - dx)
-        p_current=2*dy-dx
+        p.append(2*dx - dy)
+        p_current=2*dx-dy
         twody=2*dy 
         twodx=2*dx
         i=0
@@ -113,7 +113,7 @@ class Bresenham_ScanConversion():
                 i+=1 
         ## for m >1
         else:
-            if point0[1]>point1[1]:
+            if point0[0]>point1[0]:
                 interPoint = point1
             else:
                 interPoint = point0
@@ -124,11 +124,13 @@ class Bresenham_ScanConversion():
                     linePoints.append(interPoint)
                     p.append(p_current+(twodx-twody))
                     p_current = p_current+(twodx-twody)
+                    
                 else:
                     interPoint = interPoint+[0,1]
                     linePoints.append(interPoint)
                     p.append(p_current+twodx)
                     p_current = p_current+twodx
+                    
                 dy-=1
                 i+=1
         return linePoints,p 
