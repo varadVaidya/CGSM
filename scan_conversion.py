@@ -136,19 +136,36 @@ class Bresenham_ScanConversion():
     
     @staticmethod
     def Bresenham_Circle(Origin,r):
-        interPoints = [Origin(0),Origin(1)+r]
+        interPoints = [0,r]
         linePoints = []
         p = []
         p.append(1-r)
+        p_current=1-r
         linePoints.append(interPoints)
-        
+        while interPoints[0]!=interPoints[1]:
+            if p_current<0:
+                p_current=p_current+2*(interPoints[0]+2)+1
+                p.append(p_current)
+                interPoints = interPoints + [1,0]
+                linePoints.append(interPoints)
+            else:
+                p_current=p_current+2*(interPoints[0]+2)+1-2*(interPoints[1]-2)
+                p.append(p_current)
+                interPoints = interPoints + [1,1]
+                linePoints.append(interPoints)
+        return linePoints,p 
+        #print(linePoints)
+
+            
+
 
 
 if __name__ == "__main__":
     
-    pointList = [ np.array([0,0]),np.array([4,6]),np.array([-3,2])]     
-    polyList = DDA_ScanConversion.DDA_Polygon(pointList)
+    pointList = [ np.array([-1,-2]),np.array([1,4])]     
+    polyList,p = Bresenham_ScanConversion.Bresenham_Line(np.array([-1,-2]),np.array([1,4]))
     print(polyList)
+    print(p)
     
 
     
