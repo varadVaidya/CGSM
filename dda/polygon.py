@@ -4,13 +4,15 @@
 # @copyright = None 
 #############################################
 
-poly_locs = [[0,0], [0,5], [5,5]]
+poly_locs = [[0,0], [0,5], [5,5], [7, 3], [5, -3]]
+
+N0 = len(poly_locs)
 
 poly_points = []
 
-for i in range(len(poly_locs)): 
-    x1 = -1; x2 = 10
-    y1 = -3; y2 = 3
+for i in range(N0): 
+    x1 = poly_locs[i%N0][0]; x2 = poly_locs[(i+1)%N0][0]
+    y1 = poly_locs[i%N0][1]; y2 = poly_locs[(i+1)%N0][1]
 
     dx = (x2-x1)
     dy = (y2-y1)
@@ -25,11 +27,11 @@ for i in range(len(poly_locs)):
 
     print('######### INFO #########')
     print('x1 = ', x1, ' ', 'y1 = ', y1)
-    print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3))
+    print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3) if dx != 0 else 0)
     print('step = ', step)
     print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-    while int(x) != x2:
+    while (int(x) != x2) or (int(y) != y2):
         x += xpp
         y += ypp
 
@@ -38,6 +40,7 @@ for i in range(len(poly_locs)):
     print(points)
 
     poly_points += points
+    points = []
 
 import matplotlib.pyplot as plt
 from matplotlib import colors
