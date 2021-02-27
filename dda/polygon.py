@@ -4,7 +4,7 @@
 # @copyright = None 
 #############################################
 
-poly_locs = [[0,0], [0,5], [5,5], [7, 3], [5, -3]]
+poly_locs = [[0,0], [0,5], [5,5]]
 
 N0 = len(poly_locs)
 
@@ -32,7 +32,7 @@ for i in range(N0):
     print('step = ', step)
     print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-    while (int(x) != x2) or (int(y) != y2):
+    for i in range(step):
         x += xpp
         y += ypp
 
