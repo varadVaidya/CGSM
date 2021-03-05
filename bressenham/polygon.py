@@ -103,7 +103,7 @@ def Bresenham_Line(p1, p2):
 
     return linePoints, p
 
-poly_locs = [[0,0], [-5,5], [5,5], [5,-3]]
+poly_locs = [[0,0], [-4,5], [5,8]]
 
 N0 = len(poly_locs)
 
@@ -124,7 +124,7 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import numpy as np
 
-N = 2*len(linePoints)
+N = len(linePoints)
 # make an empty data set
 data = np.ones((N, N)) * np.nan
 scale_x = - abs(poly_locs[-1][0])

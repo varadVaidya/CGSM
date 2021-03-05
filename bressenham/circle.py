@@ -30,7 +30,7 @@ def Bresenham_Circle(r):
 
     return linePoints, p
 
-r = 5
+r = 8
 origin = np.array([0, 0])
 linePoints, p = Bresenham_Circle(r)
 

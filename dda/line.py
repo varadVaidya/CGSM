@@ -4,8 +4,8 @@
 # @copyright = None 
 #############################################
 
-x1 = 0; x2 = -10
-y1 = 0; y2 = 5
+x1 = 0; x2 = 5
+y1 = 0; y2 = 8
 
 dx = (x2-x1)
 dy = (y2-y1)
@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import numpy as np
 
-N = 2*step
+N = 4*step
 # make an empty data set
 data = np.ones((N, N)) * np.nan
 # fill in some fake data
