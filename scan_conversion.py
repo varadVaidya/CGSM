@@ -166,8 +166,10 @@ class Bresenham_ScanConversion():
 
 if __name__ == "__main__":
     
-    pointList = [ np.array([-1,-2]),np.array([1,4])]     
-    polyList,p = Bresenham_ScanConversion.Bresenham_Circle(Origin=np.array([-1,-2]),r=5)
+    pointList = [ np.array([-1,-2]),np.array([5, 0])]     
+    # polyList,p = Bresenham_ScanConversion.Bresenham_Circle(Origin=np.array([-1,-2]),r=5)
+    polyList,p = Bresenham_ScanConversion.Bresenham_Line(pointList[0], pointList[1])
+    
     print(polyList) # 1/4th points
     print(p)
     
