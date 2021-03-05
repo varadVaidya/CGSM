@@ -59,7 +59,7 @@ elif m > 1:
                 p_current += two_dx
                 p.append(p_current)
 
-if -1 <= m < 0:
+if -1 <= m <= -0:
     p_current = 2*dy - dx
     p.append(p_current)
     while x>x2 :
