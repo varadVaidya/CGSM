@@ -9,4 +9,4 @@ Various Computer Graphics Algos
     + ![](media/bress_line.png) ![](media/bress_poly.png)
 - [x] Bresenham's Circle algorithm
     + ![](media/bress_circle.png)
-- [ ] Bresenham's Ellipse algorithm
+- [x] Bresenham's Ellipse algorithm
