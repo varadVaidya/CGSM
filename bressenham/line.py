@@ -6,8 +6,8 @@
 
 # y1 should be lower
 
-x1 = 0; x2 = -10
-y1 = 0; y2 = 5
+x1 = 0; x2 = -4
+y1 = 2; y2 = 7
 
 m = round((y2-y1)/(x2-x1), 3) if (x2-x1) != 0 else 100000000 # used just to represnt inf
 
@@ -30,23 +30,22 @@ if 0 <= m <= 1:
     p_current = 2*dy - dx
     p.append(p_current)
     while x<x2 :
-        if p_current > 0 :
+        if p_current >= 0 :
             x, y = x+1, y+1
             linePoints.append([x, y])
-            if x<x2:
-                p_current += (two_dy - two_dx)
-                p.append(p_current)
+            p_current += (two_dy - two_dx)
+            p.append(p_current)
         else:
             x += 1
             linePoints.append([x, y])
-            if x<x2:
-                p_current += two_dy
-                p.append(p_current)
+            p_current += two_dy
+            p.append(p_current)
+
 elif m > 1:
     p_current = 2*dx - dy
     p.append(p_current)
     while y<y2 :
-        if p_current > 0 :
+        if p_current >= 0 :
             x, y = x+1, y+1
             linePoints.append([x, y])
             if y<y2:
@@ -63,23 +62,21 @@ if -1 <= m <= -0:
     p_current = 2*dy - dx
     p.append(p_current)
     while x>x2 :
-        if p_current > 0 :
+        if p_current >= 0 :
             x, y = x-1, y+1
             linePoints.append([x, y])
-            if x>x2:
-                p_current += (two_dy - two_dx)
-                p.append(p_current)
+            p_current += (two_dy - two_dx)
+            p.append(p_current)
         else:
             x -= 1
             linePoints.append([x, y])
-            if x>x2:
-                p_current += two_dy
-                p.append(p_current)
+            p_current += two_dy
+            p.append(p_current)
 elif m < -1:
     p_current = 2*dx - dy
     p.append(p_current)
     while y<y2 :
-        if p_current > 0 :
+        if p_current >= 0 :
             x, y = x-1, y+1
             linePoints.append([x, y])
             if y<y2:
@@ -91,6 +88,7 @@ elif m < -1:
             if y<y2:
                 p_current += two_dx
                 p.append(p_current)
+        
 
 print('Line', linePoints)
 print('-----------')

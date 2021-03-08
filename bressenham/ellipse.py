@@ -21,36 +21,39 @@ def Bresehem_Ellipse(a,b): # a is major and b is minor
         if p1_current < 0:
             interPoints = interPoints + np.array([1, 0])
             linePoints.append(interPoints.tolist())
-            p1_current += 2*(b**2)*(interPoints[0]) + b**2
-            p1.append(p1_current)
+            if (b**2)*interPoints[0] < (a**2)*interPoints[1]:
+                p1_current += 2*(b**2)*(interPoints[0]) + b**2
+                p1.append(p1_current)
         else:
             interPoints = interPoints + np.array([1, -1])
             linePoints.append(interPoints.tolist())
-            p1_current += 2*(b**2)*(interPoints[0])-2*(a**2)*(interPoints[1]) + b**2
-            p1.append(p1_current)
+            if (b**2)*interPoints[0] < (a**2)*interPoints[1]:
+                p1_current += 2*(b**2)*(interPoints[0])-2*(a**2)*(interPoints[1]) + b**2
+                p1.append(p1_current)
     
     # Region 2
-    p2 = [p1_current]
+    p2 = []
     p2_current = (b**2)*(interPoints[0] + 0.5)**2 + (a**2)*(interPoints[1]-1) - (a*b)**2
     p2.append(p2_current)
-    linePoints.append(interPoints.tolist())
 
     while  interPoints[1] > 0:
         if p2_current >= 0:
             interPoints = interPoints + np.array([0, -1])
             linePoints.append(interPoints.tolist())
-            p2_current += -2*(a**2)*(interPoints[1]) + a**2
-            p2.append(p2_current)
+            if interPoints[1] > 0:
+                p2_current += -2*(a**2)*(interPoints[1]) + a**2
+                p2.append(p2_current)
         else:
             interPoints = interPoints + np.array([1, -1])
             linePoints.append(interPoints.tolist())
-            p2_current += 2*(b**2)*(interPoints[0])-2*(a**2)*(interPoints[1]) + a**2
-            p2.append(p2_current)
+            if interPoints[1] > 0:
+                p2_current += 2*(b**2)*(interPoints[0])-2*(a**2)*(interPoints[1]) + a**2
+                p2.append(p2_current)
     
     return linePoints, p1 + p2
 
-a,b = (8,6) # a is major and b is minor
-origin = np.array([5, 2])
+a,b = (6,4) # a is major/2 and b is minor/2
+origin = np.array([-3, 2])
 linePoints, p = Bresehem_Ellipse(a,b)
 
 ellipse_1 = np.array(linePoints) # 1/4th Q1
@@ -95,6 +98,7 @@ ax.axis('off')
 
 print('1/4th ellipse: ', linePoints)
 print('p: ', p)
+print('1/4th ellipse shifted: ', (ellipse_1+origin).tolist())
 print('##########################')
 print('Full ellipse with shifted origin')
 print((ellipse + origin).tolist())

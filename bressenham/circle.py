@@ -18,19 +18,21 @@ def Bresenham_Circle(r):
 
     while interPoints[0] < interPoints[1]:
         if p_current < 0:
-            p_current += 2*(interPoints[0]) + 2
-            p.append(p_current)
             interPoints = interPoints + np.array([1, 0])
             linePoints.append(interPoints.tolist())
+            if interPoints[0] < interPoints[1]:
+                p_current += 2*(interPoints[0]) + 1
+                p.append(p_current)
         else:
-            p_current += 2*(interPoints[0]-interPoints[1]) + 5
-            p.append(p_current)
             interPoints = interPoints + np.array([1, -1])
             linePoints.append(interPoints.tolist())
+            if interPoints[0] < interPoints[1]:
+                p_current += 2*(interPoints[0]-interPoints[1]) + 1
+                p.append(p_current)
 
     return linePoints, p
 
-r = 15
+r = 6
 origin = np.array([0, 0])
 linePoints, p = Bresenham_Circle(r)
 
@@ -77,6 +79,7 @@ ax.axis('off')
 
 print('1/8th circle: ', linePoints)
 print('p: ', p)
+print('1/4th circle fully shifted: ', (circle_1 + origin).tolist())
 print('##########################')
 print('Full circle with shifted origin')
 print((circle + origin).tolist())
