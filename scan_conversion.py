@@ -24,15 +24,16 @@ class DDA_ScanConversion():
         """
         
         dx,dy = point1 - point0
+        print("dx,dy is:" ,dx,dy)
         linePoints = []
         
         step = abs(dx) if abs(dx) > abs(dy) else abs(dy)
-        
+        print("the step size is: ", step)
         interPoint = point0
         
         Xinc = dx/step
         Yinc = dy/step
-        
+        print("Xinc and Yinc is ", Xinc, Yinc)
         for i in range (step +1):
             
             # interPoint = np.rint(interPoint)
@@ -42,6 +43,7 @@ class DDA_ScanConversion():
             roundedInterPoint = np.rint(interPoint)
             linePoints.append(roundedInterPoint)
             interPoint = interPoint + [Xinc,Yinc]
+            print(interPoint)
         
         return linePoints 
         #print(linePoints)
@@ -170,8 +172,15 @@ if __name__ == "__main__":
     # polyList,p = Bresenham_ScanConversion.Bresenham_Circle(Origin=np.array([-1,-2]),r=5)
     polyList,p = Bresenham_ScanConversion.Bresenham_Line(pointList[0], pointList[1])
     
-    print(polyList) # 1/4th points
-    print(p)
+    # print(polyList) # 1/4th points
+    # print(p)
+    
+    pointList = [np.array([0,0]),np.array([6,7])]
+    
+    lineDDA = DDA_ScanConversion.DDA_Line(point0=pointList[0],point1=pointList[1])
+    print(lineDDA)
+    
+    
     
 
     
