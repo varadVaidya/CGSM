@@ -4,8 +4,8 @@
 # @copyright = None 
 #############################################
 
-x1 = -3; x2 = 6
-y1 = 2; y2 = 4
+x1 = 0; x2 = 6
+y1 = 0; y2 = 7
 
 dx = (x2-x1)
 dy = (y2-y1)
@@ -17,6 +17,7 @@ xpp = round(dx/step, 3); ypp = round(dy/step, 3)
 x,y = x1,y1
 
 points = [[x,y]]
+not_rounded = [[x,y]]
 
 print('######### INFO #########')
 print('x1 = ', x1, ' ', 'y1 = ', y1)
@@ -28,9 +29,10 @@ print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 for i in range(0, step):
     x += xpp
     y += ypp
-
+    not_rounded.append([x,y])
     points.append([round(x),round(y)])
 
+print('Not rounded Line', not_rounded)
 print('Line', points)
 
 import matplotlib.pyplot as plt

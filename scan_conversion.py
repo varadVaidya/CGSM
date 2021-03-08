@@ -177,10 +177,10 @@ if __name__ == "__main__":
     
     
     ### Use this for the DDA Line/ Polygon
-    # pointList = [np.array([0,0]),np.array([6,7])]
+    pointList = [np.array([0,0]),np.array([6,7])]
     
-    # lineDDA = DDA_ScanConversion.DDA_Line(point0=pointList[0],point1=pointList[1])
-    # print(lineDDA)
+    lineDDA = DDA_ScanConversion.DDA_Line(point0=pointList[0],point1=pointList[1])
+    print(lineDDA)
     
     
     
