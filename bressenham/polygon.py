@@ -35,23 +35,21 @@ def Bresenham_Line(p1, p2):
         p_current = 2*dy - dx
         p.append(p_current)
         while x<x2 :
-            if p_current > 0 :
+            if p_current >= 0 :
                 x, y = x+1, y+1
                 linePoints.append([x, y])
-                if x<x2:
-                    p_current += (two_dy - two_dx)
-                    p.append(p_current)
+                p_current += (two_dy - two_dx)
+                p.append(p_current)
             else:
                 x += 1
                 linePoints.append([x, y])
-                if x<x2:
-                    p_current += two_dy
-                    p.append(p_current)
+                p_current += two_dy
+                p.append(p_current)
     elif m > 1:
         p_current = 2*dx - dy
         p.append(p_current)
         while y<y2 :
-            if p_current > 0 :
+            if p_current >= 0 :
                 x, y = x+1, y+1
                 linePoints.append([x, y])
                 if y<y2:
@@ -68,23 +66,21 @@ def Bresenham_Line(p1, p2):
         p_current = 2*dy - dx
         p.append(p_current)
         while x>x2 :
-            if p_current > 0 :
+            if p_current >= 0 :
                 x, y = x-1, y+1
                 linePoints.append([x, y])
-                if x>x2:
-                    p_current += (two_dy - two_dx)
-                    p.append(p_current)
+                p_current += (two_dy - two_dx)
+                p.append(p_current)
             else:
                 x -= 1
                 linePoints.append([x, y])
-                if x>x2:
-                    p_current += two_dy
-                    p.append(p_current)
+                p_current += two_dy
+                p.append(p_current)
     elif m < -1:
         p_current = 2*dx - dy
         p.append(p_current)
         while y<y2 :
-            if p_current > 0 :
+            if p_current >= 0 :
                 x, y = x-1, y+1
                 linePoints.append([x, y])
                 if y<y2:

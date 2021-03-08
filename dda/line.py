@@ -4,8 +4,8 @@
 # @copyright = None 
 #############################################
 
-x1 = 0; x2 = 6
-y1 = 0; y2 = 7
+x1 = -3; x2 = 6
+y1 = 2; y2 = 4
 
 dx = (x2-x1)
 dy = (y2-y1)
@@ -25,11 +25,11 @@ print('dx = ', dx, ' ', 'dy = ', dy, ' ', 'm = ', round(dy/dx, 3))
 print('step = ', step)
 print('xpp = ', xpp, ' ', 'ypp = ', ypp)
 
-for i in range(step):
+for i in range(0, step):
     x += xpp
     y += ypp
 
-    points.append([int(x),int(y)])
+    points.append([round(x),round(y)])
 
 print('Line', points)
 
