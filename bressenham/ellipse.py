@@ -50,11 +50,11 @@ def Bresehem_Ellipse(a,b): # a is major and b is minor
                 p2_current += 2*(b**2)*(interPoints[0])-2*(a**2)*(interPoints[1]) + a**2
                 p2.append(p2_current)
     
-    return linePoints, p1 + p2
+    return linePoints, p1, p2
 
-a,b = (6,4) # a is major/2 and b is minor/2
-origin = np.array([-3, 2])
-linePoints, p = Bresehem_Ellipse(a,b)
+a,b = (6,2) # a is major/2 and b is minor/2
+origin = np.array([-5, 2])
+linePoints, p1, p2 = Bresehem_Ellipse(a,b)
 
 ellipse_1 = np.array(linePoints) # 1/4th Q1
 
@@ -76,8 +76,8 @@ scale_x = 0
 scale_y = 0
 # fill in some fake data
 for point in ellipse.tolist():
-    a = N - (N//2 + point[1] + scale_y)
-    b = (point[0] + scale_x + N//2)
+    a = N - (N//2 + (point[1]) + scale_y)
+    b = ((point[0]) + scale_x + N//2)
     # print(a, b)
     data[a, b] = 1
 
@@ -97,7 +97,8 @@ ax.imshow(data, interpolation='none', cmap=my_cmap, extent=[0, N, 0, N], zorder=
 ax.axis('off')
 
 print('1/4th ellipse: ', linePoints)
-print('p: ', p)
+print('p1: ', p1)
+print('p2: ', p2)
 print('1/4th ellipse shifted: ', (ellipse_1+origin).tolist())
 print('##########################')
 print('Full ellipse with shifted origin')
