@@ -2,9 +2,9 @@ import numpy as np
 from numpy import sin, cos
 
 Trans = lambda x,y: np.array([
-                        [1, 0, x],
-                        [0, 1, y],
-                        [0, 0, 1]
+                        [1, 0, 0],
+                        [0, 1, 0],
+                        [x, y, 1]
                     ])
 
 Scale = lambda x,y: np.array([
@@ -34,4 +34,3 @@ Refl = lambda m,c:  np.array([
                                                      [   0,  1, 0],
                                                      [ 2*c,  0, 1]
                                                  ])
-
